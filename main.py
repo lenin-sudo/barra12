@@ -3,6 +3,8 @@ from tkinter import ttk
 from tkinter import messagebox
 from tkinter import *
 
+from fire.console.console_attr import GetCharacterDisplayWidth
+
 import calcular as cl
 
 
@@ -24,7 +26,7 @@ def proceso():
 # GUI
 root = tk.Tk()
 root.title('BARRA12')
-root.geometry('300x150')
+root.geometry('250x150')
 root.resizable(False, False)
 
 # UI options
@@ -41,16 +43,16 @@ numero = tk.StringVar()
 texto = tk.StringVar()
 
 lbl_lg = ttk.Label(root, text='Longitud:', style='S.Label')
-lbl_lg.grid(row=0, column=0, sticky='w', **paddings)
+lbl_lg.place(x=10, y=10)
 
 ent_lg = ttk.Entry(root,  textvariable=numero, **entry_font)
-ent_lg.grid(row=0, column=2, sticky='e', **paddings)
+ent_lg.place(x=80, y=7, relwidth=0.6)
 ent_lg.focus()
 
 btn_cal = ttk.Button(root, text='CALCULAR', style='C.TButton', command=proceso)
-btn_cal.grid(row=0, column=3, **paddings)
+btn_cal.place(x=10, y=40, relx=0.25)
 
 lbl_cal = ttk.Label(root, textvariable=texto, style='S.Label')
-lbl_cal.grid(row=1, column=0, columnspan=2, **paddings)
+lbl_cal.place(x=10, rely=0.6)
 
 root.mainloop()
