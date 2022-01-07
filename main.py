@@ -1,49 +1,36 @@
 import tkinter as tk
 from tkinter import ttk
-from tkinter import messagebox
+from tkinter import *
 
-import proceso as pc
-
-
-def calcular():
-    # validacion en caso de que se ingrese valores erroneos
-    try:
-        longitud = ntr_long.get()
-        if longitud == '':
-            tk.messagebox.showerror(title='ERROR!!!', message='Debe ingresar un numero.')
-        else:
-            barra = pc.data(float(longitud))
-            newtxt.set(barra)
-    except ValueError:
-        tk.messagebox.showerror(title='ERROR!!!', message='Debe ingresar un numero y no una cadena de texto.')
-
-
+# GUI
 root = tk.Tk()
 root.title('BARRA12')
-root.geometry('350x200+350+200')
+# root.geometry('300x150')
 root.resizable(False, False)
 
-# Estilo de los widgets
-style = ttk.Style()
-style.configure("TLabel", foreground="black", font=('Helvetica', 11))
-style.configure("TButton", padding=(0, 5, 0, 5), relief="flat", background='blue', font=('Helvetica', 11))
-
-# UI options extra
+# UI options
 paddings = {'padx': 5, 'pady': 5}
-entry_font = {'font': ('Arial', 11)}
+entry_font = {'font': ('Arial Black', 11), 'width': '10'}
 
-# constantes
-number = tk.StringVar()
-newtxt = tk.StringVar()
+# Estilo de Widgets
+style = ttk.Style()
+style.configure('S.Label', foreground='black', font=('Helvetica', 11))
+style.configure('C.TButton', padding=(0, 5, 0, 5), relief='flat', background='blue', font=('Helvetica', 11))
 
-# widgets
-ttk.Label(root, text='Longitud:', style='BW.TLabel').grid(row=0, column=0, sticky=tk.W, **paddings)
+# Constantes
+numero = tk.StringVar()
+texto = tk.StringVar()
 
-ntr_long = ttk.Entry(root, textvariable=number, **entry_font).grid(row=0, column=1, sticky=tk.E, **paddings)
+lbl_lg = ttk.Label(root, text='Longitud:', style='S.Label')
+lbl_lg.grid(row=0, column=0, sticky='w', **paddings)
 
-btncal = ttk.Button(root, text='CALCULAR', style='TButton', command=calcular).grid(row=1, column=0, sticky=tk.E, **paddings)
+ent_lg = ttk.Entry(root,  textvariable=numero, **entry_font)
+ent_lg.grid(row=0, column=2, sticky='e', **paddings)
 
-ttk.Label(root, textvariable=newtxt, style='BW.TLabel').grid(row=3, column=0, **paddings)
+btn_cal = ttk.Button(root, text='CALCULAR', style='C.TButton')
+btn_cal.grid(row=1, column=0, columnspan=2, **paddings)
 
+lbl_cal = ttk.Label(root, textvariable=texto, style='S.Label')
+lbl_cal.grid(row=2, column=0, **paddings)
 
 root.mainloop()
