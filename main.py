@@ -24,10 +24,13 @@ def proceso():
 
 
 # GUI
+myColor = 'cornflowerblue'
+myColor1 = 'red'
 root = tk.Tk()
 root.title('BARRA12')
 root.geometry('250x250')
 root.resizable(False, False)
+root.config(bg=myColor)
 
 # UI options
 paddings = {'padx': 5, 'pady': 5}
@@ -35,8 +38,14 @@ entry_font = {'font': ('Arial Black', 11), 'width': '10'}
 
 # Estilo de Widgets
 style = ttk.Style()
-style.configure('S.Label', padding=(0, 5, 0, 5), foreground='black', font=('Helvetica', 11))
+style.configure('S.Label', padding=(0, 5, 0, 5), foreground='black', background=myColor, font=('Helvetica', 11))
+
+style.layout('E.TEntry', [('Entry.plain.field', {'children': [('Entry.background', {'children': [('Entry.padding', {'children': [('Entry.textarea', {'sticky': 'nswe'})], 'sticky': 'nswe'})], 'sticky': 'nswe'})], 'border': '0', 'sticky': 'nswe'})])
+
+style.configure('E.TEntry', foreground='black', background=myColor, fieldbackground='grey')
+
 style.configure('C.TButton', padding=(0, 5, 0, 5), relief='flat', background='blue', font=('Helvetica', 11))
+style.configure('W.TRadiobutton', background=myColor, foreground='black')
 
 # Constantes
 numero = tk.StringVar()
@@ -48,23 +57,23 @@ Radiobtn2 = tk.IntVar()
 lbl_lg = ttk.Label(root, text='Longitud:', style='S.Label')
 lbl_lg.place(x=10, y=10)
 
-ent_lg = ttk.Entry(root,  textvariable=numero, **entry_font)
+ent_lg = ttk.Entry(root,  textvariable=numero, style='E.TEntry', **entry_font)
 ent_lg.place(x=80, y=7, relwidth=0.6)
 ent_lg.focus()
 
 lbl_traslape = ttk.Label(root, text='Incluir traslape:', style='S.Label')
 lbl_traslape.place(x=10, y=40)
-rbNo = ttk.Radiobutton(root, text='NO', variable=Radiobtn1, value=0).place(x=110, y=40)
-rbSi = ttk.Radiobutton(root, text='SI', variable=Radiobtn1, value=1).place(x=160, y=40)
+rbNo = ttk.Radiobutton(root, text='NO', variable=Radiobtn1, style='W.TRadiobutton', value=0).place(x=110, y=40)
+rbSi = ttk.Radiobutton(root, text='SI', variable=Radiobtn1, style='W.TRadiobutton', value=1).place(x=160, y=40)
 
 lbl_diametro = ttk.Label(root, text='Diametro:', style='S.Label')
 lbl_diametro.place(x=10, y=70)
-rb8 = ttk.Radiobutton(root, text='8', variable=Radiobtn2, value=1).place(x=10, y=90)
-rb12 = ttk.Radiobutton(root, text='12', variable=Radiobtn2, value=0).place(x=50, y=90)
-rb14 = ttk.Radiobutton(root, text='14', variable=Radiobtn2, value=2).place(x=100, y=90)
-rb16 = ttk.Radiobutton(root, text='16', variable=Radiobtn2, value=3).place(x=150, y=90)
-rb18 = ttk.Radiobutton(root, text='18', variable=Radiobtn2, value=4).place(x=200, y=90)
-rb20 = ttk.Radiobutton(root, text='20', variable=Radiobtn2, value=5).place(x=10, y=120)
+rb8 = ttk.Radiobutton(root, text='8', variable=Radiobtn2, style='W.TRadiobutton', value=1).place(x=10, y=90)
+rb12 = ttk.Radiobutton(root, text='12', variable=Radiobtn2, style='W.TRadiobutton', value=0).place(x=50, y=90)
+rb14 = ttk.Radiobutton(root, text='14', variable=Radiobtn2, style='W.TRadiobutton', value=2).place(x=100, y=90)
+rb16 = ttk.Radiobutton(root, text='16', variable=Radiobtn2, style='W.TRadiobutton', value=3).place(x=150, y=90)
+rb18 = ttk.Radiobutton(root, text='18', variable=Radiobtn2, style='W.TRadiobutton', value=4).place(x=200, y=90)
+rb20 = ttk.Radiobutton(root, text='20', variable=Radiobtn2, style='W.TRadiobutton', value=5).place(x=10, y=120)
 
 btn_cal = ttk.Button(root, text='CALCULAR', style='C.TButton', command=proceso)
 btn_cal.place(x=10, y=150, relx=0.25)

@@ -7,7 +7,7 @@ def datos(longitud, traslape, diametro):
     if traslape == 0:
         barra = __multiplo(longitud)
         dist = barra*12.0
-        return f'Se necesita {barra:.0f} barras de hierro, con una longitud de {dist:.2f}.m'
+        return f'Se necesita {barra:.0f} barras de hierro, con una longitud de {dist:.2f}m.'
 
     if traslape == 1:
         barra = __multiplo(longitud)
