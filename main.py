@@ -31,6 +31,17 @@ root.title('BARRA12')
 root.geometry('250x250')
 root.resizable(False, False)
 root.config(bg=myColor)
+root.iconbitmap('Degree.ico')
+# root.overrideredirect(True)  # turns off title bar
+# root.attributes('-type', 'splash')
+# root.attributes('-topmost', True)  # encima de todas las ventanas
+# root.attributes('-alpha', 0.5)  # convierte en transparente la ventana
+# root.attributes("-fullscreen", True)  # ocupa toda la pantalla
+# root.attributes('-zoomed', '1')  # NO FUNCIONA
+# root.attributes("-toolwindow", 1)  # oculta maximizar y minimizar y el icono 0 y 1
+# root.lift()
+# root.lower()
+# root.focus_force()
 
 # UI options
 paddings = {'padx': 5, 'pady': 5}
@@ -40,11 +51,11 @@ entry_font = {'font': ('Arial Black', 11), 'width': '10'}
 style = ttk.Style()
 style.configure('S.Label', padding=(0, 5, 0, 5), foreground='black', background=myColor, font=('Helvetica', 11))
 
-style.layout('E.TEntry', [('Entry.plain.field', {'children': [('Entry.background', {'children': [('Entry.padding', {'children': [('Entry.textarea', {'sticky': 'nswe'})], 'sticky': 'nswe'})], 'sticky': 'nswe'})], 'border': '0', 'sticky': 'nswe'})])
+style.layout('E.TEntry', [('Entry.plain.field', {'children': [('Entry.background', {'children': [('Entry.padding', {'children': [('Entry.textarea', {'sticky': 'nswe'})], 'sticky': 'nswe'})], 'sticky': 'nswe'})], 'border': '1', 'sticky': 'nswe'})])
 
-style.configure('E.TEntry', foreground='black', background=myColor, fieldbackground='grey')
+style.configure('E.TEntry', foreground='black', background=myColor, fieldbackground='gainsboro')
 
-style.configure('C.TButton', padding=(0, 5, 0, 5), relief='flat', background='blue', font=('Helvetica', 11))
+style.configure('C.TButton', padding=(0, 5, 0, 5), relief='flat', overrelief='raised', background='blue', font=('Helvetica', 11))
 style.configure('W.TRadiobutton', background=myColor, foreground='black')
 
 # Constantes
